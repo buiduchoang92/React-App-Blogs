@@ -6,9 +6,11 @@ const Routers = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Home} render={history => history.pushState('/blogs')} />
 
-        <Route path="/:id" component={ViewDetails} />
+        <Route path="/blogs" exact component={Home} />
+
+        <Route path="/blogs/:id" component={ViewDetails} />
 
         <Route path="*" component={NotFound} />
       </Switch>

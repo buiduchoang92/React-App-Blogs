@@ -7,6 +7,7 @@ import SearchPage from '../component/SearchPage';
 import Blogs from '../component/Blogs';
 import Pagination from '../component/Pagination';
 import SortDropdown from '../component/SortPage';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -48,13 +49,22 @@ export default function Home() {
 
   const searchText = value => {
     setSearchTerm(value);
+    history.push({
+      pathname: '/blogs',
+      search: `?search=${value}`
+    });
   };
 
   const handleSelect = value => {
     setTypeFilter(value);
+    history.push({
+      pathname: '/blogs',
+      search: `?sortBy=${value}`
+    });
   };
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     try {
@@ -77,7 +87,13 @@ export default function Home() {
           <SortDropdown handleSelect={handleSelect} typeFilter={typeFilter} />
           <SearchPage searchText={searchText} />
         </div>
-        <Blogs blogs={currentBlogs} loading={loading} />
+        <Blogs
+          blogs={currentBlogs}
+          loading={loading}
+          history={history}
+          blogsPerPage={blogsPerPage}
+          currentPage={currentPage}
+        />
         <Pagination
           blogsPerPage={blogsPerPage}
           totalBlogs={blogs.length}
