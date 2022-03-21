@@ -1,14 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Blogs = props => {
-  const { blogs, loading, history, currentPage, blogsPerPage } = props;
-  useEffect(() => {
-    history.push({
-      pathname: '/blogs',
-      search: `?page=${currentPage}&limit=${blogsPerPage}`
-    });
-  }, [currentPage]);
+  const { blogs, loading } = props;
 
   return (
     <div>

@@ -87,13 +87,7 @@ export default function Home() {
           <SortDropdown handleSelect={handleSelect} typeFilter={typeFilter} />
           <SearchPage searchText={searchText} />
         </div>
-        <Blogs
-          blogs={currentBlogs}
-          loading={loading}
-          history={history}
-          blogsPerPage={blogsPerPage}
-          currentPage={currentPage}
-        />
+        <Blogs blogs={currentBlogs} loading={loading} />
         <Pagination
           blogsPerPage={blogsPerPage}
           totalBlogs={blogs.length}
@@ -101,6 +95,7 @@ export default function Home() {
           nextPage={nextPage}
           prevPage={prevPage}
           currentPage={currentPage}
+          history={history}
         />
       </div>
     </>

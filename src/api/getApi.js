@@ -5,6 +5,7 @@ export class GetApiService {
     this.axiosClient = axiosClient;
   }
   getUrl(url) {
+    console.log('service geturl');
     return new Promise((resolve, reject) => {
       this.axiosClient
         .get(url)

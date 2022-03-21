@@ -19,6 +19,8 @@ We need install
 npm install prettier eslint-plugin-prettier eslint-config-prettier -D
 `Lazy load`
 7.npm i --save react-lazy-load-image-component
+`redux-persist`
+8.npm install redux-persist
 
 ## Available Scripts
 

@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Pagination = props => {
-  const { blogsPerPage, totalBlogs, paginate, nextPage, prevPage, currentPage } = props;
-
+  const { blogsPerPage, totalBlogs, paginate, nextPage, prevPage, currentPage, history } = props;
+  useEffect(() => {
+    console.log('blogs render');
+    history.push({
+      pathname: '/blogs',
+      search: `?page=${currentPage}&limit=${blogsPerPage}`
+    });
+  }, [currentPage, history, blogsPerPage]);
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalBlogs / blogsPerPage); i++) {
     pageNumbers.push(i);

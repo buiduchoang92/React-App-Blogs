@@ -1,11 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ViewDetails = () => {
   const { state } = useLocation();
-
+  const bl = useSelector(state => state.blogs);
+  console.log(bl, 'blog');
   return (
     <React.Fragment>
       <div className="container">
